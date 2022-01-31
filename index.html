@@ -190,7 +190,7 @@
 
       async function main() {
         // Initialize AWS and create Polly service objects
-        window.AWS.config.region = 'us-west-2';
+        window.AWS.config.region = 'us-east-1';
         window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
           IdentityPoolId: '<Enter Cognito Identity Pool ID here>',
         });
@@ -205,9 +205,9 @@
         // Define the glTF assets that will represent the host
         const characterFile1 =
           './assets/glTF/characters/adult_male/luke/luke.gltf';
-        const characterFile2 = './assets/glTF/characters/alien/alien.gltf';
-        const animationPath1 = './assets/glTF/animations/adult_male';
-        const animationPath2 = './assets/glTF/animations/alien';
+        const characterFile2 = './examples/assets/glTF/characters/alien/alien.gltf';
+        const animationPath1 = './examples/assets/glTF/animations/adult_male';
+        const animationPath2 = './examples/assets/glTF/animations/alien';
         const animationFiles = [
           'stand_idle.glb',
           'lipsync.glb',
