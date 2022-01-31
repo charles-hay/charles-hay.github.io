@@ -177,9 +177,6 @@
 
     <!--Create the Three.js scene-->
     <script type="module">
-      import * as THREE from 'three';
-      import {OrbitControls} from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
-      import {GLTFLoader} from 'https://threejs.org/examples/jsm/loaders/GLTFLoader.js';
 
       const renderFn = [];
       const speakers = new Map([
@@ -432,7 +429,7 @@
           0.1,
           1000
         );
-        const controls = new OrbitControls(camera, renderer.domElement);
+        const controls;
         camera.position.set(0, 1.4, 3.1);
         controls.target = new THREE.Vector3(0, 0.8, 0);
         controls.screenSpacePanning = true;
@@ -512,7 +509,7 @@
       ) {
         // Asset loader
         const fileLoader = new THREE.FileLoader();
-        const gltfLoader = new GLTFLoader();
+        const gltfLoader;
 
         function loadAsset(loader, assetPath, onLoad) {
           return new Promise(resolve => {
