@@ -177,6 +177,8 @@
 
     <!--Create the Three.js scene-->
     <script type="module">
+      import {OrbitControls} from './src/OrbitControls.js';
+      import {GLTFLoader} from './src/GLTFLoader.js';
 
       const renderFn = [];
       const speakers = new Map([
@@ -408,7 +410,7 @@
 
         // Env map
         new THREE.TextureLoader()
-          .setPath('assets/')
+          .setPath('examples/assets/')
           .load('images/machine_shop.jpg', hdrEquirect => {
             const hdrCubeRenderTarget = pmremGenerator.fromEquirectangular(
               hdrEquirect
@@ -429,7 +431,7 @@
           0.1,
           1000
         );
-        const controls = {};
+        const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 1.4, 3.1);
         controls.target = new THREE.Vector3(0, 0.8, 0);
         controls.screenSpacePanning = true;
@@ -509,7 +511,7 @@
       ) {
         // Asset loader
         const fileLoader = new THREE.FileLoader();
-        const gltfLoader = {};
+        const gltfLoader = new GLTFLoader();
 
         function loadAsset(loader, assetPath, onLoad) {
           return new Promise(resolve => {
