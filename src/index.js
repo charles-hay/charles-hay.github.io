@@ -1,7 +1,3 @@
-
-import OrbitControls from "./OrbitControls.js";
-import GLTFLoader from "./GLTFLoader.js";
-
 const renderFn = [];
 const speakers = new Map([
     ['Luke', undefined],
@@ -11,6 +7,9 @@ const speakers = new Map([
 main();
 
 async function main() {
+    import OrbitControls from "./OrbitControls.js";
+    import GLTFLoader from "./GLTFLoader.js";
+    
     // Initialize AWS and create Polly service objects
     window.AWS.config.region = 'us-east-1';
     window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
