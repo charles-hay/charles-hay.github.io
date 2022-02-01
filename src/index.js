@@ -207,7 +207,7 @@ async function main() {
     await speechInit;
 
     speakers.set('Luke', host1);
-    speakers.set('Alien', host2);
+    speakers.set('Grace', host2);
 
     initializeUX();
 }
