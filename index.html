@@ -4,35 +4,33 @@
 -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Kansas Health</title>
-    <link rel="stylesheet" href="src/style.css">
 
-    <!--Text to speech dependency-->
-    <script
-      type="text/javascript"
-      src="https://sdk.amazonaws.com/js/aws-sdk-2.645.0.min.js"
-    ></script>
-    <!--Three.js dependencies-->
-    <script src="https://threejs.org/build/three.min.js"></script>
-    <!--Host build file-->
-    <script type="text/javascript" src="./dist/host.three.js"></script>
-    <script type="module" src="src/index.js"></script>
-  </head>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Kansas Health</title>
+  <link rel="stylesheet" href="src/style.css">
 
-  <body>
-    <!--Loading screen-->
-    <div id="loadScreen">
-      <div id="loader"></div>
-    </div>
+  <!--Text to speech dependency-->
+  <script type="text/javascript" src="https://sdk.amazonaws.com/js/aws-sdk-2.645.0.min.js"></script>
+  <!--Three.js dependencies-->
+  <script src="https://threejs.org/build/three.min.js"></script>
+  <!--Host build file-->
+  <script type="text/javascript" src="./dist/host.three.js"></script>
+  <script type="module" src="src/index.js"></script>
+</head>
 
-    <!--Text to speech controls-->
-    <div id="textToSpeech">
-      <button class="tab current">Luke</button>
-      <button class="tab">Grace</button>
-      <div>
-        <textarea autofocus size="23" type="text" class="textEntry Luke">
+<body>
+  <!--Loading screen-->
+  <div id="loadScreen">
+    <div id="loader"></div>
+  </div>
+
+  <!--Text to speech controls-->
+  <div id="textToSpeech">
+    <button class="tab current">Luke</button>
+    <button class="tab">Grace</button>
+    <div>
+      <textarea autofocus size="23" type="text" class="textEntry Luke">
 <speak>
   <amazon:domain name="conversational">
     Hello Kansas Health, we made this quick demo to show you what can be done with AWS Sumerian! We look forward to working with you!
@@ -41,19 +39,20 @@
   </amazon:domain>
 </speak>
         </textarea>
-        <textarea autofocus size="23" type="text" class="textEntry Alien">
+      <textarea autofocus size="23" type="text" class="textEntry Grace">
 <speak>
     Hi there! I can't wait to help teach science!
 </speak>
         </textarea>
-      </div>
-      <div>
-        <button id="play" class="speechButton">Play</button>
-        <button id="pause" class="speechButton">Pause</button>
-        <button id="resume" class="speechButton">Resume</button>
-        <button id="stop" class="speechButton">Stop</button>
-      </div>
     </div>
+    <div>
+      <button id="play" class="speechButton">Play</button>
+      <button id="pause" class="speechButton">Pause</button>
+      <button id="resume" class="speechButton">Resume</button>
+      <button id="stop" class="speechButton">Stop</button>
+    </div>
+  </div>
 
-  </body>
+</body>
+
 </html>
