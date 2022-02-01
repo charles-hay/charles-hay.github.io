@@ -44,7 +44,7 @@ async function main() {
     const audioAttachJoint1 = 'chardef_c_neckB'; // Name of the joint to attach audio to
     const audioAttachJoint2 = 'charhead';
     const lookJoint1 = 'charjx_c_look'; // Name of the joint to use for point of interest target tracking
-    const lookJoint2 = 'chargaze';
+    const lookJoint2 = 'charjx_c_look';
     const voice1 = 'Matthew'; // Polly voice. Full list of available voices at: https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
     const voice2 = 'Ivy';
     const voiceEngine = 'neural'; // Neural engine is not available for all voices in all regions: https://docs.aws.amazon.com/polly/latest/dg/NTTS-main.html
