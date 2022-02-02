@@ -230,6 +230,18 @@ function createScene() {
     renderer.domElement.id = 'renderCanvas';
     document.body.appendChild(renderer.domElement);
 
+    // Env map
+    scene.environment = new THREE.TextureLoader()
+    .setPath('assets/')
+    .load('images/machine_shop.jpg', hdrEquirect => {
+      const hdrCubeRenderTarget = pmremGenerator.fromEquirectangular(
+        hdrEquirect
+      );
+      hdrEquirect.dispose();
+      pmremGenerator.dispose();
+
+      return hdrCubeRenderTarget.texture;
+    });
 
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
