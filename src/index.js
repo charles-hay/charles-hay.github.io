@@ -217,7 +217,7 @@ function createScene() {
     // Base scene
     const scene = new THREE.Scene();
     const clock = new THREE.Clock();
-    scene.background = new THREE.Color(0x33334d);
+    scene.background = new THREE.Color(0xee334d);
     scene.fog = new THREE.Fog(0x33334d, 0, 10);
 
     // Renderer
