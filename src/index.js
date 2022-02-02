@@ -232,7 +232,7 @@ function createScene() {
 
     // Env map
     scene.environment = new THREE.TextureLoader()
-    .setPath('assets/')
+    .setPath('examples/assets/')
     .load('images/machine_shop.jpg', hdrEquirect => {
       const hdrCubeRenderTarget = pmremGenerator.fromEquirectangular(
         hdrEquirect
