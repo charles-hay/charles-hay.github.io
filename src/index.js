@@ -233,16 +233,14 @@ function createScene() {
     // Env map
     new THREE.TextureLoader()
         .setPath('examples/')
-        .load('assets/images/machine_shop.jpg', hdrEquirect => {
-            console.log(hdrEquirect)
-            const hdrCubeRenderTarget = pmremGenerator.fromEquirectangular(
-                hdrEquirect
-            );
-            console.log(hdrCubeRenderTarget);
-            hdrEquirect.dispose();
-            pmremGenerator.dispose();
-
-            scene.environment = hdrCubeRenderTarget.texture;
+        .load('assets/images/machine_shop.jpg', texture => {
+            // in this example we create the material when the texture is loaded
+            const material = new THREE.MeshBasicMaterial( {
+                map: texture
+             } );
+        },
+        error => {
+            console.error(error)
         });
 
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
