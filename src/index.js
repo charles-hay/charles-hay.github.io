@@ -232,8 +232,7 @@ function createScene() {
 
     // Env map
     new THREE.TextureLoader()
-        .setPath('examples/')
-        .load('assets/images/machine_shop.jpg', texture => {
+        .load('examples/assets/images/machine_shop.jpg', texture => {
             // in this example we create the material when the texture is loaded
             const material = new THREE.MeshBasicMaterial({
                 map: texture
@@ -243,8 +242,9 @@ function createScene() {
                 console.error(error)
             });
 
-    const pmremGenerator = new THREE.PMREMGenerator(renderer);
-    pmremGenerator.compileEquirectangularShader();
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set(4, 4);
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
