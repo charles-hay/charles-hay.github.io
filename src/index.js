@@ -235,13 +235,13 @@ function createScene() {
         .setPath('examples/')
         .load('assets/images/machine_shop.jpg', texture => {
             // in this example we create the material when the texture is loaded
-            const material = new THREE.MeshBasicMaterial( {
+            const material = new THREE.MeshBasicMaterial({
                 map: texture
-             } );
+            });
         },
-        error => {
-            console.error(error)
-        });
+            error => {
+                console.error(error)
+            });
 
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
@@ -764,30 +764,33 @@ function initializeUX(speakers) {
 
     // Update the text area text with gesture SSML markup when clicked
     const gestureButton = document.getElementById('gestures');
-    gestureButton.onclick = () => {
-        const { name, host } = getCurrentHost(speakers);
-        const speechInput = document.getElementsByClassName(
-            `textEntry ${name}`
-        )[0];
-        const gestureMap = host.GestureFeature.createGestureMap();
-        const gestureArray = host.GestureFeature.createGenericGestureArray([
-            'Gesture',
-        ]);
-        speechInput.value = HOST.aws.TextToSpeechUtils.autoGenerateSSMLMarks(
-            speechInput.value,
-            gestureMap,
-            gestureArray
-        );
+    if (gestureButton) {
+        gestureButton.onclick = () => {
+            const { name, host } = getCurrentHost(speakers);
+            const speechInput = document.getElementsByClassName(
+                `textEntry ${name}`
+            )[0];
+            const gestureMap = host.GestureFeature.createGestureMap();
+            const gestureArray = host.GestureFeature.createGenericGestureArray([
+                'Gesture',
+            ]);
+            speechInput.value = HOST.aws.TextToSpeechUtils.autoGenerateSSMLMarks(
+                speechInput.value,
+                gestureMap,
+                gestureArray
+            );
+        };
     };
 
     // Play emote on demand with emote button
     const emoteSelect = document.getElementById('emotes');
     const emoteButton = document.getElementById('playEmote');
-    emoteButton.onclick = () => {
-        const { host } = getCurrentHost(speakers);
-        host.GestureFeature.playGesture('Emote', emoteSelect.value);
+    if (emoteButton && emoteSelect) {
+        emoteButton.onclick = () => {
+            const { host } = getCurrentHost(speakers);
+            host.GestureFeature.playGesture('Emote', emoteSelect.value);
+        };
     };
-
     // Initialize tab
     const tab = document.getElementsByClassName('tab current')[0];
     toggleHost({ target: tab });
