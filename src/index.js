@@ -217,6 +217,7 @@ function createScene() {
     // Base scene
     const scene = new THREE.Scene();
     const clock = new THREE.Clock();
+    scene.background = new THREE.Color(0x33334d);
     scene.fog = new THREE.Fog(0x33334d, 0, 10);
 
     // Renderer
@@ -230,20 +231,20 @@ function createScene() {
     document.body.appendChild(renderer.domElement);
 
     // Env map
-    const texture = new THREE.TextureLoader()
-        .load('examples/assets/images/machine_shop.jpg', texture => {
-            // in this example we create the material when the texture is loaded
-            const material = new THREE.MeshBasicMaterial({
-                map: texture
-            });
-        },
-            error => {
-                console.error(error)
-            });
+    new THREE.TextureLoader()
+    .setPath('assets/')
+    .load('images/machine_shop.jpg', hdrEquirect => {
+      const hdrCubeRenderTarget = pmremGenerator.fromEquirectangular(
+        hdrEquirect
+      );
+      hdrEquirect.dispose();
+      pmremGenerator.dispose();
 
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.RepeatWrapping;
-    scene.background = texture.repeat.set(4, 4);
+      scene.environment = hdrCubeRenderTarget.texture;
+    });
+
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    pmremGenerator.compileEquirectangularShader();
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
