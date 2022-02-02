@@ -217,7 +217,6 @@ function createScene() {
     // Base scene
     const scene = new THREE.Scene();
     const clock = new THREE.Clock();
-    scene.background = new THREE.Color(0xee334d);
     scene.fog = new THREE.Fog(0x33334d, 0, 10);
 
     // Renderer
@@ -244,7 +243,7 @@ function createScene() {
 
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(4, 4);
+    scene.background = texture.repeat.set(4, 4);
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
