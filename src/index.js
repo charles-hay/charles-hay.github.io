@@ -725,19 +725,21 @@ function toggleHost(evt) {
 
     // Update emote selector
     const emoteSelect = document.getElementById('emotes');
-    emoteSelect.length = 0;
-    const emotes = host.AnimationFeature.getAnimations('Emote');
-    emotes.forEach((emote, i) => {
-        const emoteOption = document.createElement('option');
-        emoteOption.text = emote;
-        emoteOption.value = emote;
-        emoteSelect.add(emoteOption, 0);
+    if (emoteSelect) {
+        emoteSelect.length = 0;
+        const emotes = host.AnimationFeature.getAnimations('Emote');
+        emotes.forEach((emote, i) => {
+            const emoteOption = document.createElement('option');
+            emoteOption.text = emote;
+            emoteOption.value = emote;
+            emoteSelect.add(emoteOption, 0);
 
-        // Set the current item to the first emote
-        if (!i) {
-            emoteSelect.value = emote;
-        }
-    });
+            // Set the current item to the first emote
+            if (!i) {
+                emoteSelect.value = emote;
+            }
+        });
+    }
 }
 
 function initializeUX(speakers) {
