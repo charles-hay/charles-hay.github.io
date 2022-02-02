@@ -231,7 +231,7 @@ function createScene() {
     document.body.appendChild(renderer.domElement);
 
     // Env map
-    new THREE.TextureLoader()
+    const texture = new THREE.TextureLoader()
         .load('examples/assets/images/machine_shop.jpg', texture => {
             // in this example we create the material when the texture is loaded
             const material = new THREE.MeshBasicMaterial({
