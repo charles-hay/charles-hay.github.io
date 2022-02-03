@@ -249,7 +249,7 @@ function createScene() {
         side: THREE.BackSide,
     });
     material.uniforms.tEquirect.value = texture;
-    const plane = new THREE.BoxBufferGeometry(10, 10, 10);
+    const plane = new THREE.BoxBufferGeometry(5, 0, 5);
     const bgMesh = new THREE.Mesh(plane, material);
     scene.add(bgMesh);
 
