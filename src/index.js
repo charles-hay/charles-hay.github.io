@@ -250,7 +250,7 @@ function createScene() {
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
-        THREE.MathUtils.radToDeg(0.8),
+        THREE.MathUtils.radToDeg(1.2),
         window.innerWidth / window.innerHeight,
         0.1,
         1000
