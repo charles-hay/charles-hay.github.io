@@ -217,7 +217,6 @@ function createScene() {
     // Base scene
     const scene = new THREE.Scene();
     const clock = new THREE.Clock();
-    scene.background = new THREE.Color(0x33334d);
     scene.fog = new THREE.Fog(0x33334d, 0, 10);
 
     // Renderer
@@ -231,17 +230,13 @@ function createScene() {
     document.body.appendChild(renderer.domElement);
 
     // Env map
-    scene.environment = new THREE.TextureLoader()
-    .setPath('examples/assets/')
-    .load('images/machine_shop.jpg', hdrEquirect => {
-      const hdrCubeRenderTarget = pmremGenerator.fromEquirectangular(
-        hdrEquirect
-      );
-      hdrEquirect.dispose();
-      pmremGenerator.dispose();
-
-      return hdrCubeRenderTarget.texture;
-    });
+    scene.background = new THREE.TextureLoader()
+        .load('examples/assets/images/machine_shop.jpg', hdrEquirect => {
+            console.log('sucessfully loaded machineshop')
+        },
+            error => {
+                console.log(error)
+            });
 
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
