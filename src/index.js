@@ -72,9 +72,9 @@ async function main() {
         animationFiles
     );
 
-    character1.position.set(1.25, 0, 0);
+    character1.position.set(1.25, -1.5, 0);
     character1.rotateY(-0.5);
-    character2.position.set(-0.5, 0, 0);
+    character2.position.set(-0.5, -1.5, 0);
     character2.rotateY(0.5);
 
     // Find the joints defined by name
@@ -238,8 +238,6 @@ function createScene() {
 
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
-    texture.offset.x = -1;
-    texture.offset.y = 15;
 
     const shader = THREE.ShaderLib.equirect;
     const material = new THREE.ShaderMaterial({
