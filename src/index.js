@@ -238,8 +238,8 @@ function createScene() {
 
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
-    texture.offset.x = -0.5;
-    texture.offset.y = -0.5;
+    texture.offset.x = -1;
+    texture.offset.y = 1.5;
 
     const shader = THREE.ShaderLib.equirect;
     const material = new THREE.ShaderMaterial({
