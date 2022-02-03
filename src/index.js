@@ -10,6 +10,7 @@ const speakers = new Map([
 main();
 
 async function main() {
+    const FLOOR = -2
     // Initialize AWS and create Polly service objects
     window.AWS.config.region = 'us-east-1';
     window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -72,9 +73,9 @@ async function main() {
         animationFiles
     );
 
-    character1.position.set(1.25, -1.5, 0);
+    character1.position.set(1.25, FLOOR, 0);
     character1.rotateY(-0.5);
-    character2.position.set(-0.5, -1.5, 0);
+    character2.position.set(-0.5, FLOOR, 0);
     character2.rotateY(0.5);
 
     // Find the joints defined by name
@@ -248,7 +249,7 @@ function createScene() {
         side: THREE.BackSide,
     });
     material.uniforms.tEquirect.value = texture;
-    const plane = new THREE.BoxBufferGeometry(4, 4, 4);
+    const plane = new THREE.BoxBufferGeometry(4, FLOOR*2, 4);
     const bgMesh = new THREE.Mesh(plane, material);
     scene.add(bgMesh);
 
@@ -260,7 +261,7 @@ function createScene() {
         1000
     );
     const controls = new OrbitControls(camera, renderer.domElement);
-    camera.position.set(0, -0.5, 3.1);
+    camera.position.set(0, FLOOR/2, 3.1);
     controls.target = new THREE.Vector3(0, 0.8, 0);
     controls.screenSpacePanning = true;
     controls.update();
