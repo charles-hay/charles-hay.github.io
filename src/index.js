@@ -248,7 +248,7 @@ function createScene() {
         side: THREE.BackSide,
     });
     material.uniforms.tEquirect.value = texture;
-    const plane = new THREE.BoxBufferGeometry(3, 3, 3);
+    const plane = new THREE.BoxBufferGeometry(4, 4, 4);
     const bgMesh = new THREE.Mesh(plane, material);
     scene.add(bgMesh);
 
@@ -260,7 +260,7 @@ function createScene() {
         1000
     );
     const controls = new OrbitControls(camera, renderer.domElement);
-    camera.position.set(0, -1, 3.1);
+    camera.position.set(0, -0.5, 3.1);
     controls.target = new THREE.Vector3(0, 0.8, 0);
     controls.screenSpacePanning = true;
     controls.update();
