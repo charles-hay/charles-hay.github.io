@@ -217,8 +217,6 @@ function createScene() {
     // Base scene
     const scene = new THREE.Scene();
     const clock = new THREE.Clock();
-    scene.fog = new THREE.Fog(0x33334d, 0, 10);
-
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
