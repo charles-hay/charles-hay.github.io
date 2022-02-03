@@ -230,16 +230,30 @@ function createScene() {
     document.body.appendChild(renderer.domElement);
 
     // Env map
-    scene.background = new THREE.TextureLoader()
+    texture = new THREE.TextureLoader()
         .load('examples/assets/images/machine_shop.jpg', hdrEquirect => {
             console.log('sucessfully loaded machineshop')
+            console.log(hdrEquirect)
         },
             error => {
                 console.log(error)
             });
 
-    const pmremGenerator = new THREE.PMREMGenerator(renderer);
-    pmremGenerator.compileEquirectangularShader();
+    texture.magFilter = THREE.LinearFilter;
+    texture.minFilter = THREE.LinearFilter;
+
+    const shader = THREE.ShaderLib.equirect;
+    const material = new THREE.ShaderMaterial({
+        fragmentShader: shader.fragmentShader,
+        vertexShader: shader.vertexShader,
+        uniforms: shader.uniforms,
+        depthWrite: false,
+        side: THREE.BackSide,
+    });
+    material.uniforms.tEquirect.value = texture;
+    const plane = new THREE.BoxBufferGeometry(2, 2, 2);
+    const bgMesh = new THREE.Mesh(plane, material);
+    scene.add(bgMesh);
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
