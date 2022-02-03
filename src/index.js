@@ -250,13 +250,13 @@ function createScene() {
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
-        THREE.MathUtils.radToDeg(1),
+        THREE.MathUtils.radToDeg(1.1),
         window.innerWidth / window.innerHeight,
         0.1,
         1000
     );
     const controls = new OrbitControls(camera, renderer.domElement);
-    camera.position.set(0, FLOOR/2, 3.7);
+    camera.position.set(0, FLOOR/2, 3.2);
     controls.target = new THREE.Vector3(0, 0.8, 0);
     controls.screenSpacePanning = true;
     controls.update();
