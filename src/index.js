@@ -260,7 +260,7 @@ function createScene() {
         1000
     );
     const controls = new OrbitControls(camera, renderer.domElement);
-    camera.position.set(0, 0, 3.1);
+    camera.position.set(0, -1, 3.1);
     controls.target = new THREE.Vector3(0, 0.8, 0);
     controls.screenSpacePanning = true;
     controls.update();
