@@ -230,7 +230,7 @@ function createScene() {
     document.body.appendChild(renderer.domElement);
 
     // Env map
-    texture = new THREE.TextureLoader()
+    const texture = new THREE.TextureLoader()
         .load('examples/assets/images/machine_shop.jpg', hdrEquirect => {
             console.log('sucessfully loaded machineshop')
             console.log(hdrEquirect)
