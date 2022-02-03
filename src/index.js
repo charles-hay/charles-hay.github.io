@@ -6,11 +6,11 @@ const speakers = new Map([
     ['Luke', undefined],
     ['Alien', undefined],
 ]);
+const FLOOR = -2;
 
 main();
 
 async function main() {
-    const FLOOR = -2
     // Initialize AWS and create Polly service objects
     window.AWS.config.region = 'us-east-1';
     window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
