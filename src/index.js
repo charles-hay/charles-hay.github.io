@@ -230,12 +230,7 @@ function createScene() {
 
     // Env map
     const texture = new THREE.TextureLoader()
-        .load('examples/assets/images/machine_shop.jpg', hdrEquirect => {
-            console.log('sucessfully loaded machineshop')
-        },
-            error => {
-                console.log(error)
-            });
+        .load('examples/assets/images/machine_shop.jpg');
 
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
@@ -255,7 +250,7 @@ function createScene() {
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
-        THREE.MathUtils.radToDeg(0),
+        15,
         window.innerWidth / window.innerHeight,
         0.1,
         1000
