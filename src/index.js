@@ -246,7 +246,7 @@ function createScene() {
         vertexShader: shader.vertexShader,
         uniforms: shader.uniforms,
         depthWrite: false,
-        side: THREE.BackSide,
+        side: THREE.FrontSide,
     });
     material.uniforms.tEquirect.value = texture;
     const plane = new THREE.BoxBufferGeometry(8, FLOOR*2, 8);
