@@ -231,7 +231,6 @@ function createScene() {
     const texture = new THREE.TextureLoader()
         .load('examples/assets/images/machine_shop.jpg', hdrEquirect => {
             console.log('sucessfully loaded machineshop')
-            console.log(hdrEquirect)
         },
             error => {
                 console.log(error)
@@ -249,7 +248,7 @@ function createScene() {
         side: THREE.BackSide,
     });
     material.uniforms.tEquirect.value = texture;
-    const plane = new THREE.BoxBufferGeometry(5, 0, 5);
+    const plane = new THREE.BoxBufferGeometry(5, 5, 5);
     const bgMesh = new THREE.Mesh(plane, material);
     scene.add(bgMesh);
 
