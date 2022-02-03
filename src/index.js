@@ -238,8 +238,8 @@ function createScene() {
 
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
-    texture.offset.x = 0.5;
-    texture.offset.y = 0.5;
+    texture.offset.x = -0.5;
+    texture.offset.y = -0.5;
 
     const shader = THREE.ShaderLib.equirect;
     const material = new THREE.ShaderMaterial({
@@ -250,7 +250,7 @@ function createScene() {
         side: THREE.BackSide,
     });
     material.uniforms.tEquirect.value = texture;
-    const plane = new THREE.BoxBufferGeometry(2, 2, 2);
+    const plane = new THREE.BoxBufferGeometry(3, 3, 3);
     const bgMesh = new THREE.Mesh(plane, material);
     scene.add(bgMesh);
 
