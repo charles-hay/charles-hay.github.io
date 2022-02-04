@@ -260,7 +260,7 @@ function createScene() {
     camera.position.set(0, FLOOR/2, 3);
     console.log(...CHARACTER1_POSITION)
     camera.lookAt(...CHARACTER1_POSITION)
-    controls.target = new THREE.Vector3(0, 0.8, 0);
+    controls.target = new THREE.Vector3(...CHARACTER1_POSITION);
     controls.screenSpacePanning = true;
     controls.update();
 
