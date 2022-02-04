@@ -4,7 +4,7 @@ import GLTFLoader from "./GLTFLoader.js";
 const renderFn = [];
 const speakers = new Map([
     ['Luke', undefined],
-    ['Alien', undefined],
+    ['Grace', undefined],
 ]);
 const FLOOR = -2;
 const CHARACTER1_POSITION = [1.25, FLOOR, 0];
@@ -259,8 +259,6 @@ function createScene() {
     const controls = new OrbitControls(camera, renderer.domElement);
     const cameraLookAt = [CHARACTER1_POSITION[0], FLOOR/2, CHARACTER1_POSITION[2]]
     camera.position.set(0, FLOOR/2, 3);
-    console.log(...cameraLookAt)
-    camera.lookAt(...cameraLookAt)
     controls.target = new THREE.Vector3(...cameraLookAt);
     controls.screenSpacePanning = true;
     controls.update();
