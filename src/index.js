@@ -7,6 +7,8 @@ const speakers = new Map([
     ['Alien', undefined],
 ]);
 const FLOOR = -2;
+const CHARACTER1_POSITION = [1.25, FLOOR, 0];
+const CHARACTER2_POSITION = [-0.5, FLOOR, 0];
 
 main();
 
@@ -72,10 +74,9 @@ async function main() {
         animationPath2,
         animationFiles
     );
-
-    character1.position.set(1.25, FLOOR, 0);
+    character1.position.set(...CHARACTER1_POSITION);
     character1.rotateY(-0.5);
-    character2.position.set(-0.5, FLOOR, 0);
+    character2.position.set(...CHARACTER2_POSITION);
     character2.rotateY(0.5);
 
     // Find the joints defined by name
@@ -257,6 +258,7 @@ function createScene() {
     );
     const controls = new OrbitControls(camera, renderer.domElement);
     camera.position.set(0, FLOOR/2, 3);
+    camera.lookAt(CHARACTER1_POSITION)
     controls.target = new THREE.Vector3(0, 0.8, 0);
     controls.screenSpacePanning = true;
     controls.update();
