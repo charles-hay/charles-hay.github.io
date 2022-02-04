@@ -253,7 +253,7 @@ function createScene() {
         THREE.MathUtils.radToDeg(1.2),
         window.innerWidth / window.innerHeight,
         0.1,
-        1000
+        500
     );
     const controls = new OrbitControls(camera, renderer.domElement);
     camera.position.set(0, FLOOR/2, 3);
