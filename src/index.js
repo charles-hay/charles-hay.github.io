@@ -699,8 +699,9 @@ function getCurrentHost() {
 }
 
 // Update UX with data for the current host
-function toggleHost(evt) {
-    const tab = evt.target;
+const toggleHost = (event) => {
+    console.log(event);
+    const tab = event.target;
     const allTabs = document.getElementsByClassName('tab');
 
     // Update tab classes
