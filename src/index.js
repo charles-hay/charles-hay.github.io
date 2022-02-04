@@ -251,10 +251,10 @@ function createScene() {
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
-        THREE.MathUtils.radToDeg(1.2),
+        THREE.MathUtils.radToDeg(0.8),
         window.innerWidth / window.innerHeight,
         0.1,
-        500
+        1000
     );
     const controls = new OrbitControls(camera, renderer.domElement);
     const cameraLookAt = [CHARACTER1_POSITION[0], FLOOR/2, CHARACTER1_POSITION[2]]
