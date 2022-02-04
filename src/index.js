@@ -2,13 +2,13 @@ import OrbitControls from "./OrbitControls.js";
 import GLTFLoader from "./GLTFLoader.js";
 
 const renderFn = [];
+const FLOOR = -2;
+const CHARACTER1_POSITION = [1.25, FLOOR, 0];
+const CHARACTER2_POSITION = [-0.5, FLOOR, 0];
 const speakers = new Map([
     ['Luke', undefined],
     ['Grace', undefined],
 ]);
-const FLOOR = -2;
-const CHARACTER1_POSITION = [1.25, FLOOR, 0];
-const CHARACTER2_POSITION = [-0.5, FLOOR, 0];
 
 main();
 
@@ -211,7 +211,7 @@ async function main() {
     speakers.set('Luke', host1);
     speakers.set('Grace', host2);
 
-    initializeUX();
+    initializeUX(camera);
 }
 
 // Set up base scene
@@ -699,7 +699,7 @@ function getCurrentHost() {
 }
 
 // Update UX with data for the current host
-const toggleHost = (event) => {
+const toggleHost = (event, camera) => {
     console.log(event);
     const tab = event.target;
     const allTabs = document.getElementsByClassName('tab');
@@ -746,15 +746,15 @@ const toggleHost = (event) => {
     }
 }
 
-function initializeUX(speakers) {
-    console.log('speaker');
-    console.log(speakers)
+function initializeUX(camera) {
+    console.log('camera');
+    console.log(camera)
     // Enable drag/drop text files on the speech text area
     enableDragDrop('textEntry');
 
     // Connect tab buttons to hosts
     Array.from(document.getElementsByClassName('tab')).forEach(tab => {
-        tab.onclick = evt => { toggleHost(evt); }
+        tab.onclick = evt => { toggleHost(evt, camera); }
     });
 
     // Play, pause, resume and stop the contents of the text input as speech
