@@ -747,6 +747,8 @@ const toggleHost = (event) => {
 }
 
 function initializeUX(speakers) {
+    console.log('speaker');
+    console.log(speakers)
     // Enable drag/drop text files on the speech text area
     enableDragDrop('textEntry');
 
