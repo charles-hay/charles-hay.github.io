@@ -8,7 +8,7 @@ The easiest way to start using the API is to include the build file that corresp
 
 ## License
 
-This library is licensed under the MIT-0 License. See the [LICENSE](LICENSE) file. The assets within examples are licensed under the CC-BY-4.0 License. See the [LICENSE](examples/assets/LICENSE) file.
+This library is licensed under the MIT-0 License. See the [LICENSE](LICENSE) file. The assets within examples are licensed under the CC-BY-4.0 License. See the [LICENSE](assets/LICENSE) file.
 <br/><br/>
 
 # [Getting Started](#Getting-Started)

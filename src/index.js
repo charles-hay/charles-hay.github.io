@@ -33,11 +33,11 @@ async function main() {
 
     // Define the glTF assets that will represent the host
     const characterFile1 =
-        '../examples/assets/glTF/characters/adult_male/luke/luke.gltf';
+        '../assets/glTF/characters/adult_male/luke/luke.gltf';
     const characterFile2 =
-        '../examples/assets/glTF/characters/adult_female/grace/grace.gltf';
-    const animationPath1 = '../examples/assets/glTF/animations/adult_male';
-    const animationPath2 = '../examples/assets/glTF/animations/adult_female';
+        '../assets/glTF/characters/adult_female/grace/grace.gltf';
+    const animationPath1 = '../assets/glTF/animations/adult_male';
+    const animationPath2 = '../assets/glTF/animations/adult_female';
     const animationFiles = [
         'stand_idle.glb',
         'lipsync.glb',
@@ -236,7 +236,7 @@ function createScene() {
 
     // Env map
     const texture = new THREE.TextureLoader()
-        .load('examples/assets/images/hospital.jpeg');
+        .load('assets/images/hospital.jpeg');
 
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
