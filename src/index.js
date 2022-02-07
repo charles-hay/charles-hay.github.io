@@ -236,7 +236,7 @@ function createScene() {
 
     // Env map
     const texture = new THREE.TextureLoader()
-        .load('assets/images/hospital.jpeg');
+        .load('assets/images/hospital.jpg');
 
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
