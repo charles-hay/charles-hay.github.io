@@ -257,7 +257,7 @@ function createScene() {
         1000
     );
     const controls = new OrbitControls(camera, renderer.domElement);
-    const cameraLookAt = [CHARACTER1_POSITION[0], FLOOR/2, CHARACTER1_POSITION[2]]
+    const cameraLookAt = [CHARACTER1_POSITION[0], FLOOR/2, CHARACTER1_POSITION[2]];
     camera.position.set(0, FLOOR/2, 3);
     controls.target = new THREE.Vector3(...cameraLookAt);
     controls.screenSpacePanning = true;
@@ -722,6 +722,7 @@ const toggleHost = (event, camera) => {
     } else {
         camera.lookAt(...CHARACTER1_POSITION);
     }
+    controls.update();
     
     for (let i = 0, l = textEntries.length; i < l; i += 1) {
         const textEntry = textEntries[i];
@@ -752,14 +753,14 @@ const toggleHost = (event, camera) => {
     }
 }
 
-function initializeUX(camera) {
-    console.log('camera');
-    console.log(camera)
+const initializeUX = (camera) => {
     // Enable drag/drop text files on the speech text area
     enableDragDrop('textEntry');
 
     // Connect tab buttons to hosts
     Array.from(document.getElementsByClassName('tab')).forEach(tab => {
+        console.log('the camera');
+        console.log(camera);
         tab.onclick = evt => { toggleHost(evt, camera); }
     });
 
