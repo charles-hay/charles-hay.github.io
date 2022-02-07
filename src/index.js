@@ -263,7 +263,7 @@ function createScene() {
     );
     const controls = new OrbitControls(camera, renderer.domElement);
     camera.position.set(0, FLOOR/2, 3);
-    controls.target = getControlsTarget;
+    controls.target = getControlsTarget(CHARACTER2_POSITION);
     controls.screenSpacePanning = true;
     controls.update();
 
@@ -723,6 +723,7 @@ const toggleHost = (event, controls = undefined) => {
     if (controls) {
         const characterPosition = name === "Grace" ? CHARACTER2_POSITION : CHARACTER1_POSITION;
         controls.target = getControlsTarget(characterPosition);
+        controls.panSpeed(0.3);
         controls.update();
     }
     
