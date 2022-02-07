@@ -718,9 +718,9 @@ const toggleHost = (event, camera) => {
     const textEntries = document.getElementsByClassName('textEntry');
 
     if (name == "Grace") {
-        camera.lookTo(...CHARACTER2_POSITION);
+        camera.lookAt(...CHARACTER2_POSITION);
     } else {
-        camera.lookTo(...CHARACTER1_POSITION);
+        camera.lookAt(...CHARACTER1_POSITION);
     }
     
     for (let i = 0, l = textEntries.length; i < l; i += 1) {
