@@ -723,7 +723,9 @@ const toggleHost = (event, controls = undefined) => {
     if (controls) {
         const characterPosition = name === "Grace" ? CHARACTER2_POSITION : CHARACTER1_POSITION;
         controls.target = getControlsTarget(characterPosition);
-        controls.panSpeed = 0.3;
+        controls.panSpeed = 0.1;
+        controls.enablePan = true;
+        controls.screenSpacePanning = true;
         controls.update();
     }
     
