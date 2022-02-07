@@ -10,6 +10,11 @@ const speakers = new Map([
     ['Grace', undefined],
 ]);
 
+const getControlsTarget = (characterPosition) => {
+    const cameraVector = [characterPosition[0], FLOOR/2, characterPosition[2]];
+    return new THREE.Vector3(...cameraVector);
+};
+
 main();
 
 async function main() {
@@ -214,10 +219,6 @@ async function main() {
     initializeUX(controls);
 }
 
-const getControlsTarget = (characterPosition) => {
-    const cameraVector = [characterPosition[0], FLOOR/2, characterPosition[2]];
-    return new THREE.Vector3(...cameraVector);
-}
 // Set up base scene
 function createScene() {
     // Base scene
@@ -720,11 +721,8 @@ const toggleHost = (event, controls = undefined) => {
     const { name, host } = getCurrentHost(speakers);
     const textEntries = document.getElementsByClassName('textEntry');
     if (controls) {
-        if (name == "Grace") {
-            controls.target = new THREE.Vector3(...CHARACTER2_POSITION);
-        } else {
-            controls.target = new THREE.Vector3(...CHARACTER1_POSITION);
-        }
+        const characterPosition = name === "Grace" ? CHARACTER2_POSITION : CHARACTER1_POSITION;
+        controls.target = getControlsTarget(characterPosition);
         controls.update();
     }
     
