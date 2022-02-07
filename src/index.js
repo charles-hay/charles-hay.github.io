@@ -214,6 +214,10 @@ async function main() {
     initializeUX(controls);
 }
 
+const getControlsTarget = (characterPosition) => {
+    const cameraVector = [characterPosition[0], FLOOR/2, characterPosition[2]];
+    return new THREE.Vector3(...cameraVector);
+}
 // Set up base scene
 function createScene() {
     // Base scene
@@ -257,9 +261,8 @@ function createScene() {
         1000
     );
     const controls = new OrbitControls(camera, renderer.domElement);
-    const cameraLookAt = [CHARACTER1_POSITION[0], FLOOR/2, CHARACTER1_POSITION[2]];
     camera.position.set(0, FLOOR/2, 3);
-    controls.target = new THREE.Vector3(...cameraLookAt);
+    controls.target = getControlsTarget;
     controls.screenSpacePanning = true;
     controls.update();
 
