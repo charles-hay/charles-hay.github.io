@@ -53,7 +53,7 @@ async function main() {
     const voiceEngine = 'neural'; // Neural engine is not available for all voices in all regions: https://docs.aws.amazon.com/polly/latest/dg/NTTS-main.html
 
     // Set up the scene and host
-    const { scene, camera, clock } = createScene();
+    const { scene, camera, clock, controls } = createScene();
     const {
         character: character1,
         clips: clips1,
@@ -211,7 +211,7 @@ async function main() {
     speakers.set('Luke', host1);
     speakers.set('Grace', host2);
 
-    initializeUX(camera);
+    initializeUX(controls);
 }
 
 // Set up base scene
@@ -324,7 +324,7 @@ function createScene() {
     ground.rotation.x = -Math.PI / 2;
     ground.receiveShadow = true;
 
-    return { scene, camera, clock };
+    return { scene, camera, clock, controls };
 }
 
 // Load character model and animations
@@ -699,7 +699,7 @@ function getCurrentHost() {
 }
 
 // Update UX with data for the current host
-const toggleHost = (event, camera) => {
+const toggleHost = (event, controls = undefined) => {
     console.log(event);
     const tab = event.target;
     const allTabs = document.getElementsByClassName('tab');
@@ -716,13 +716,14 @@ const toggleHost = (event, camera) => {
     // Show/hide speech input classes
     const { name, host } = getCurrentHost(speakers);
     const textEntries = document.getElementsByClassName('textEntry');
-
-    if (name == "Grace") {
-        camera.lookAt(...CHARACTER2_POSITION);
-    } else {
-        camera.lookAt(...CHARACTER1_POSITION);
+    if (controls) {
+        if (name == "Grace") {
+            controls.target = new THREE.Vector3(...CHARACTER2_POSITION);
+        } else {
+            controls.target = new THREE.Vector3(...CHARACTER1_POSITION);
+        }
+        controls.update();
     }
-    controls.update();
     
     for (let i = 0, l = textEntries.length; i < l; i += 1) {
         const textEntry = textEntries[i];
@@ -753,15 +754,13 @@ const toggleHost = (event, camera) => {
     }
 }
 
-const initializeUX = (camera) => {
+const initializeUX = (controls) => {
     // Enable drag/drop text files on the speech text area
     enableDragDrop('textEntry');
 
     // Connect tab buttons to hosts
     Array.from(document.getElementsByClassName('tab')).forEach(tab => {
-        console.log('the camera');
-        console.log(camera);
-        tab.onclick = evt => { toggleHost(evt, camera); }
+        tab.onclick = evt => { toggleHost(evt, controls); }
     });
 
     // Play, pause, resume and stop the contents of the text input as speech
