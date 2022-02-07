@@ -3,7 +3,7 @@ import GLTFLoader from "./GLTFLoader.js";
 
 const renderFn = [];
 const FLOOR = -2;
-const CHARACTER1_POSITION = [1.25, FLOOR, 0];
+const CHARACTER1_POSITION = [1.0, FLOOR, 0];
 const CHARACTER2_POSITION = [-0.5, FLOOR, 0];
 const speakers = new Map([
     ['Luke', undefined],
@@ -250,7 +250,7 @@ function createScene() {
         side: THREE.FrontSide,
     });
     material.uniforms.tEquirect.value = texture;
-    const plane = new THREE.BoxBufferGeometry(5, FLOOR*2, 5);
+    const plane = new THREE.BoxBufferGeometry(4, FLOOR*2, 4);
     const bgMesh = new THREE.Mesh(plane, material);
     scene.add(bgMesh);
 
