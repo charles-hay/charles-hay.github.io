@@ -26,11 +26,7 @@ body {
 }
 
 .textEntry {
-    min-width: 305px;
-    min-height: 200px;
-    outline: 0px;
-    padding: 10px;
-    resize: both;
+    display: none;
 }
 
 .speechButton {
@@ -40,10 +36,6 @@ body {
 .gestureButton {
     width: 327px;
     outline: 0px;
-}
-
-.hidden {
-    display: none;
 }
 
 #renderCanvas {

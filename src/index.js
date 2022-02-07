@@ -719,7 +719,6 @@ const toggleHost = (event, controls = undefined) => {
 
     // Show/hide speech input classes
     const { name, host } = getCurrentHost(speakers);
-    const textEntries = document.getElementsByClassName('textEntry');
     if (controls) {
         const characterPosition = name === "Grace" ? CHARACTER2_POSITION : CHARACTER1_POSITION;
         controls.target = getControlsTarget(characterPosition);
@@ -727,16 +726,6 @@ const toggleHost = (event, controls = undefined) => {
         controls.enablePan = true;
         controls.screenSpacePanning = true;
         controls.update();
-    }
-    
-    for (let i = 0, l = textEntries.length; i < l; i += 1) {
-        const textEntry = textEntries[i];
-
-        if (textEntry.classList.contains(name)) {
-            textEntry.classList.remove('hidden');
-        } else {
-            textEntry.classList.add('hidden');
-        }
     }
 
     // Update emote selector
