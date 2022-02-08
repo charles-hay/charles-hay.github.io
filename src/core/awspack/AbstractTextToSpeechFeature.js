@@ -637,6 +637,7 @@ class AbstractTextToSpeechFeature extends AbstractHostFeature {
     });
     this._speechCache[text] = speech;
 
+    console.log(speech)
     return speech;
   }
 
@@ -697,6 +698,7 @@ class AbstractTextToSpeechFeature extends AbstractHostFeature {
         // Convert charcodes to string
         const jsonString = JSON.stringify(result.AudioStream);
         const json = JSON.parse(jsonString);
+        console.log(json);
         const dataStr = json.data.map(c => String.fromCharCode(c)).join('');
 
         const markTypes = {
