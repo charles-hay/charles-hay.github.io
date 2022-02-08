@@ -704,7 +704,6 @@ function getCurrentHost() {
 
 // Update UX with data for the current host
 const toggleHost = (event, controls = undefined) => {
-    console.log(event);
     const tab = event.target;
     const allTabs = document.getElementsByClassName('tab');
 
@@ -765,6 +764,7 @@ const initializeUX = (controls) => {
             const speechInput = document.getElementsByClassName(
                 `textEntry ${name}`
             )[0];
+            console.log(speechInput)
             host.TextToSpeechFeature[id](speechInput.value);
         };
     });
