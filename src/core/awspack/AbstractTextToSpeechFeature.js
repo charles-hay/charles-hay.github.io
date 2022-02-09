@@ -691,15 +691,18 @@ class AbstractTextToSpeechFeature extends AbstractHostFeature {
    * @returns {Deferred} Resolves with an array of speechmark objects
    */
   _synthesizeSpeechmarks(params) {
+    console.log(params)
     return this.constructor.SERVICES.polly
       .synthesizeSpeech(params)
       .promise()
       .then(result => {
         // Convert charcodes to string
+        console.log(result);
         const jsonString = JSON.stringify(result.AudioStream);
         const json = JSON.parse(jsonString);
         console.log(json);
         const dataStr = json.data.map(c => String.fromCharCode(c)).join('');
+        console.log(dataStr);
 
         const markTypes = {
           sentence: [],
