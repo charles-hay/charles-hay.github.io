@@ -21,7 +21,7 @@ async function main() {
     // Initialize AWS and create Polly service objects
     window.AWS.config.region = 'us-east-1';
     window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: 'us-east-1:558eaa4f-2243-4ad2-89bb-efb1e5aafa2e',
+        IdentityPoolId: 'us-east-1:ae057fea-2121-466d-bcae-5b8e5cc6ed77',
     });
     const polly = new AWS.Polly();
     const presigner = new AWS.Polly.Presigner();
