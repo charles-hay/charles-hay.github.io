@@ -764,9 +764,8 @@ const initializeUX = (controls) => {
             const speechInput = document.getElementsByClassName(
                 `textEntry ${name}`
             )[0];
-            console.log(speechInput.value)
-            console.log(host.TextToSpeechFeature[id]);
             host.TextToSpeechFeature[id](speechInput.value);
+            return;
         };
     });
 
